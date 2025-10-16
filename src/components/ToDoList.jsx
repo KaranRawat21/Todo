@@ -1,6 +1,6 @@
 import ToDoItem from "./ToDoItem";
 
-export default function ToDoList({ toDoList, onDelete, onToggle }) {
+export default function ToDoList({ toDoList, onDelete, onToggle, onEdit }) {
   return (
     <div className="w-full ">
       <div className=" w-full flex  flex-col gap-2 items-center">
@@ -12,7 +12,8 @@ export default function ToDoList({ toDoList, onDelete, onToggle }) {
                 key={task.id}
                 task={task}
                 onDelete={onDelete}
-                onToggle={onToggle} />
+                onToggle={onToggle}
+                onEdit={onEdit} />
             ))
 
         }
