@@ -6,7 +6,16 @@ import { useState } from 'react';
 
 export default function App() {
 
-  const [toDoList, setToDoList] = useState([1, 2]);
+  const [toDoList, setToDoList] = useState([]);
+  const [input, setInput] = useState("");
+
+  const addToDO = () => {
+    if (input.trim() === "") return;
+    setToDoList([...toDoList, { id: Date.now(), text: input, completed: false }]);
+    setInput("");
+  }
+
+
 
   return (
     <div className=' flex justify-center pt-20 '>
@@ -17,9 +26,14 @@ export default function App() {
         <div className=' flex w-full  justify-center '>
           <input
             type='text'
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             placeholder='Add a task...'
             className=' w-full max-w-[600px]  border-1 border-purple-300 p-2 rounded-l-xl outline-0 placeholder:text-purple-400' />
-          <button className=' w-[50px] rounded-r-xl flex justify-center items-center text-2xl text-white  bg-purple-500 cursor-pointer hover:bg-purple-700'><IoAddSharp /></button>
+
+          <button
+            onClick={addToDO}
+            className=' w-[50px] rounded-r-xl flex justify-center items-center text-2xl text-white  bg-purple-500 cursor-pointer hover:bg-purple-700'><IoAddSharp /></button>
         </div>
 
         <ToDoList
