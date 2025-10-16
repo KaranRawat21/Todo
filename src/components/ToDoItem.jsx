@@ -1,17 +1,19 @@
 import { TiTick } from "react-icons/ti";
 import { MdEdit, MdDelete } from "react-icons/md";
 
-export default function ToDoItem({ task, onDelete }) {
+export default function ToDoItem({ task, onDelete, onToggle }) {
   return (
     <div className="w-full bg-gray-200 p-3 rounded-2xl shadow-2xl flex flex-wrap items-center gap-3">
 
       {/* Tick Icon */}
-      <div className={`${task.completed ? "bg-purple-500" : "bg-white border border-gray-500"} w-[30px] h-[30px] rounded-full text-white flex justify-center items-center text-2xl flex-shrink-0 cursor-pointer`}>
+      <div
+        onClick={() => onToggle(task.id)}
+        className={`${task.completed ? "bg-purple-500" : "bg-white border border-gray-500"} w-[30px] h-[30px] rounded-full text-white flex justify-center items-center text-2xl flex-shrink-0 cursor-pointer`}>
         < TiTick />
       </div>
 
       {/* Text */}
-      <p className="flex-1 min-w-[150px] break-words whitespace-pre-wrap overflow-hidden text-sm sm:text-base text-gray-700">
+      <p className={`flex-1 min-w-[150px] break-words whitespace-pre-wrap overflow-hidden text-sm sm:text-base text-gray-700 ${task.completed ? " line-through text-gray-300" : ""} `}>
         {task.text}
       </p>
 

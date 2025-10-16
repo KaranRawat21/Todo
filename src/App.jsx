@@ -15,7 +15,15 @@ export default function App() {
     setInput("");
   };
 
-  const deleteTodo = (id) => setToDoList(toDoList.filter((todo) => todo.id !== id))
+  //handle delete
+  const deleteTodo = (id) => setToDoList(toDoList.filter((todo) => todo.id !== id));
+
+  //handle toggleComplete
+  const toggleComplete = (id) => {
+    setToDoList(toDoList.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo))
+  };
+
+
 
 
 
@@ -41,6 +49,7 @@ export default function App() {
         <ToDoList
           toDoList={toDoList}
           onDelete={deleteTodo}
+          onToggle={toggleComplete}
         />
       </div>
     </div>
