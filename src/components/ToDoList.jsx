@@ -1,6 +1,6 @@
 import ToDoItem from "./ToDoItem";
 
-export default function ToDoList({ toDoList }) {
+export default function ToDoList({ toDoList, onDelete }) {
   return (
     <div className="w-full ">
       <div className=" w-full flex  flex-col gap-2 items-center">
@@ -10,7 +10,8 @@ export default function ToDoList({ toDoList }) {
             : toDoList.map(task => (
               <ToDoItem
                 key={task.id}
-                task={task} />
+                task={task}
+                onDelete={onDelete} />
             ))
 
         }

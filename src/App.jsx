@@ -13,7 +13,9 @@ export default function App() {
     if (input.trim() === "") return;
     setToDoList([...toDoList, { id: Date.now(), text: input, completed: false }]);
     setInput("");
-  }
+  };
+
+  const deleteTodo = (id) => setToDoList(toDoList.filter((todo) => todo.id !== id))
 
 
 
@@ -37,7 +39,9 @@ export default function App() {
         </div>
 
         <ToDoList
-          toDoList={toDoList} />
+          toDoList={toDoList}
+          onDelete={deleteTodo}
+        />
       </div>
     </div>
   )

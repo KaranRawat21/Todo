@@ -1,7 +1,7 @@
 import { TiTick } from "react-icons/ti";
 import { MdEdit, MdDelete } from "react-icons/md";
 
-export default function ToDoItem({ task }) {
+export default function ToDoItem({ task, onDelete }) {
   return (
     <div className="w-full bg-gray-200 p-3 rounded-2xl shadow-2xl flex flex-wrap items-center gap-3">
 
@@ -20,7 +20,9 @@ export default function ToDoItem({ task }) {
         <button className="py-2 px-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition cursor-pointer">
           <MdEdit />
         </button>
-        <button className="py-2 px-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition cursor-pointer">
+        <button
+          onClick={() => onDelete(task.id)}
+          className="py-2 px-3 bg-red-500 text-white rounded-md hover:bg-red-600 transition cursor-pointer">
           <MdDelete />
         </button>
       </div>
